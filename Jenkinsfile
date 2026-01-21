@@ -14,9 +14,7 @@ pipeline {
                             junit 'build/test-results/test/*.xml'
 
                             // 2. CORRECTION CUCUMBER ICI : On a enlevé "buildId"
-                            cucumber fileIncludePattern: '**/report.json',
-                                     sortingMethod: 'ALPHABETICAL'
-                        }
+                            cucumber fileIncludePattern: 'reports/example-report.json'                        }
                     }
                 }
 
