@@ -4,23 +4,21 @@ pipeline {
     stages {
         // --- PHASE 1 : TEST ---
         stage('Test') {
-            steps {
-                echo 'Lancement des tests unitaires...'
-                // Lance les tests avec Gradle
-                bat 'gradlew.bat test'
-            }
-            post {
-                always {
-                    // 1. Archivage des résultats JUnit (natif Jenkins)
-                    junit 'build/test-results/test/*.xml'
+                    steps {
+                        echo 'Lancement des tests unitaires...'
+                        bat 'gradlew.bat test'
+                    }
+                    post {
+                        always {
+                            // 1. JUnit
+                            junit 'build/test-results/test/*.xml'
 
-                    // 2. Génération du rapport Cucumber (Plugin "Cucumber reports")
-                    cucumber buildId: '0',
-                             fileIncludePattern: '**/report.json',
-                             sortingMethod: 'ALPHABETICAL'
+                            // 2. CORRECTION CUCUMBER ICI : On a enlevé "buildId"
+                            cucumber fileIncludePattern: '**/report.json',
+                                     sortingMethod: 'ALPHABETICAL'
+                        }
+                    }
                 }
-            }
-        }
 
         // --- PHASE 2 : CODE ANALYSIS ---
         stage('Code Analysis') {
