@@ -32,17 +32,16 @@ pipeline {
         }
 
         // --- PHASE 3 : CODE QUALITY ---
-        stage('Quality Gate') {
-            steps {
-                echo 'Vérification de la Quality Gate...'
-                timeout(time: 2, unit: 'MINUTES') {
-                    // Cette étape attend la réponse de SonarQube via le Webhook
-                    // Si le Quality Gate est rouge, le pipeline s'arrête ici (abortPipeline: true)
-                    waitForQualityGate abortPipeline: true
-                }
-            }
-        }
-
+       // --- PHASE 3 : CODE QUALITY ---
+               stage('Quality Gate') {
+                   steps {
+                       echo 'Vérification de la Quality Gate...'
+                       // On augmente le temps d'attente à 5 minutes
+                       timeout(time: 5, unit: 'MINUTES') {
+                           waitForQualityGate abortPipeline: true
+                       }
+                   }
+               }
         // --- PHASE 4 : BUILD ---
         stage('Build') {
             steps {
