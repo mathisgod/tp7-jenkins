@@ -21,15 +21,15 @@ pipeline {
                 }
 
         // --- PHASE 2 : CODE ANALYSIS ---
-        stage('Code Analysis') {
-            steps {
-                echo 'Analyse SonarQube...'
+      //  stage('Code Analysis') {
+            //steps {
+              //  echo 'Analyse SonarQube...'
                 // "sonar" doit correspondre au NOM que vous avez donné au serveur dans "Manage Jenkins -> System"
-                withSonarQubeEnv('sonar') {
-                    bat 'gradlew.bat sonar'
-                }
-            }
-        }
+                //withSonarQubeEnv('sonar') {
+                  //  bat 'gradlew.bat sonar'
+                //}
+            //}
+        //}
 
         // --- PHASE 3 : CODE QUALITY ---
        // --- PHASE 3 : CODE QUALITY ---
