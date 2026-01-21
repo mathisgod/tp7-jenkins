@@ -48,12 +48,16 @@ repositories {
 
 // --- 4. DÉPENDANCES ---
 dependencies {
-    // JUnit 5 (Jupiter)
-    testImplementation(platform("org.junit.jupiter:junit-jupiter:5.9.1"))
-    testImplementation("org.junit.jupiter:junit-jupiter")
+    // CORRECTION : On enlève "platform()" et on met la version directement ici
+    testImplementation("org.junit.jupiter:junit-jupiter:5.9.1")
+
+    // Si vous avez besoin de Cucumber, assurez-vous de l'ajouter ici aussi (sinon supprimez ces lignes)
+    // testImplementation("io.cucumber:cucumber-java:7.14.0")
+    // testImplementation("io.cucumber:cucumber-junit-platform-engine:7.14.0")
+}
 
     // Ajoutez ici vos autres dépendances (Cucumber, etc.) si nécessaire
-}
+
 
 // --- 5. CONFIGURATION SONARQUBE ---
 sonarqube {
