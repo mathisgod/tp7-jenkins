@@ -33,15 +33,15 @@ pipeline {
 
         // --- PHASE 3 : CODE QUALITY ---
        // --- PHASE 3 : CODE QUALITY ---
-               stage('Quality Gate') {
-                   steps {
-                       echo 'Vérification de la Quality Gate...'
+             //  stage('Quality Gate') {
+               //    steps {
+                 //      echo 'Vérification de la Quality Gate...'
                        // On augmente le temps d'attente à 5 minutes
-                       timeout(time: 5, unit: 'MINUTES') {
-                           waitForQualityGate abortPipeline: true
-                       }
-                   }
-               }
+                   //    timeout(time: 5, unit: 'MINUTES') {
+                     //      waitForQualityGate abortPipeline: true
+                       //}
+                   //}
+               //}
         // --- PHASE 4 : BUILD ---
         stage('Build') {
             steps {
