@@ -51,9 +51,15 @@ dependencies {
     // CORRECTION : On enlève "platform()" et on met la version directement ici
     testImplementation("org.junit.jupiter:junit-jupiter:5.9.1")
 
-    // Si vous avez besoin de Cucumber, assurez-vous de l'ajouter ici aussi (sinon supprimez ces lignes)
-    // testImplementation("io.cucumber:cucumber-java:7.14.0")
-    // testImplementation("io.cucumber:cucumber-junit-platform-engine:7.14.0")
+    // 2. JUnit 4 (Nécessaire car votre code utilise 'org.junit.Assert' et '@RunWith')
+    testImplementation("junit:junit:4.13.2")
+
+    // 3. Moteur Vintage (Pour faire tourner les vieux tests JUnit 4 sur la plateforme moderne)
+    testRuntimeOnly("org.junit.vintage:junit-vintage-engine:5.9.1")
+
+    // 4. CUCUMBER (Indispensable pour vos fichiers Steps)
+    testImplementation("io.cucumber:cucumber-java:7.14.0")
+    testImplementation("io.cucumber:cucumber-junit:7.14.0")
 }
 
     // Ajoutez ici vos autres dépendances (Cucumber, etc.) si nécessaire
